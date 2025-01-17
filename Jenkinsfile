@@ -18,7 +18,7 @@ pipeline{
             steps{
                 sh '''
                     echo ${FTP_HOST_NAME}
-                    /usr/bin/git-ftp init --user ${FTP_CREDENTIALS_USR} --passwd ${FTP_CREDENTIALS_PSW} ftp://${FTP_HOST_NAME}/public_html/
+                    /usr/bin/git-ftp/git-ftp init --user ${FTP_CREDENTIALS_USR} --passwd ${FTP_CREDENTIALS_PSW} ftp://${FTP_HOST_NAME}/public_html/
                 '''
             }
         }
