@@ -17,12 +17,15 @@ pipeline{
         stage('Deploy to Remote'){
             steps{
                 sh '''
-                    git ftp init --user ${FTP_CREDENTIALS_USR} --passwd ${FTP_CREDENTIALS_PSW} ftp://${FTP_HOST_NAME}/public_html/
+                    /usr/bin/git-ftp init --user ${FTP_CREDENTIALS_USR} --passwd ${FTP_CREDENTIALS_PSW} ftp://${FTP_HOST_NAME}/public_html/
                 '''
             }
         }
     }
 }
+
+
+//git ftp init --user ${FTP_CREDENTIALS_USR} --passwd ${FTP_CREDENTIALS_PSW} ftp://${FTP_HOST_NAME}/public_html/
 //git ftp init --user $FTP_USERNAME --passwd $FTP_PASSWORD ftp://${staging_server}/public_html/
 
 // sh '''
