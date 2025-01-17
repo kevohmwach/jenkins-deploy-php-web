@@ -1,6 +1,11 @@
 pipeline{
-    agent{
-        label 'jenkins-agent-docker-jnlp'
+    agent { 
+        node {
+            label 'jenkins-agent-docker-jnlp'
+        }
+      }
+    triggers {
+        pollSCM '*/5 * * * *'
     }
     environment{
         staging_server="185.27.134.119"
