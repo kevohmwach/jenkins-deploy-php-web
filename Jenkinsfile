@@ -1,14 +1,13 @@
 pipeline{
     agent { 
         node {
-            label 'jenkins-agent-docker-jnlp'
+            label 'jenkins-slave-jdk-ftp'
         }
       }
     triggers {
         pollSCM '*/5 * * * *'
     }
-    environment{
-        staging_server="185.27.134.119"
+    environment {
         FTP_CREDENTIALS = credentials('GradestarFTP_credentials')
         FTP_HOST_NAME = credentials('Gradestar_ftp_hostname')
         
@@ -17,7 +16,7 @@ pipeline{
         stage('Deploy to Remote'){
             steps{
                 sh '''
-                    git ftp init --user ${FTP_CREDENTIALS_USR} --passwd ${FTP_CREDENTIALS_PSW} ftp://${FTP_HOST_NAME}/public_html/
+                    git ftp push --user ${FTP_CREDENTIALS_USR} --passwd ${FTP_CREDENTIALS_PSW} ftp://${FTP_HOST_NAME}/htdocs/
                 '''
             }
         }
